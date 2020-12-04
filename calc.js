@@ -54,8 +54,42 @@ function operate(num1,num2,operator)
 
 }
 
-function theDomHasLoaded(e) {
+let display = {
+	"sequence":[],
+};
+
+function deleteSequence()
+{
+	display["sequence"] = [];
+}
+
+function storeNumbers()
+{
+	display["sequence"].push(this.getAttribute('value'));
+
+	let display_panel = document.querySelector("#display");
+	display_panel.textContent = display["sequence"];
+
+}
+
+function chooseOperator()
+{
 	
 }
+
+function theDomHasLoaded(e) {
+	const buttons = document.querySelectorAll('.buttons');
+	buttons.forEach(button => {
+		button.addEventListener('click',storeNumbers);
+		
+	});
+
+	const clear = document.querySelector('#clear');
+	clear.addEventListener('click',deleteSequence);
+
+	const equal = document.querySelector('#equal');
+	equal.addEventListener('click',chooseOperator);
+}
+
 
 document.addEventListener("DOMContentLoaded",theDomHasLoaded,false);
