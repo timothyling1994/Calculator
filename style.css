@@ -1,0 +1,201 @@
+html,body{
+	margin:0;
+	font-family:"courier";
+	max-width:100%;
+	max-height:100%;
+	font-size:50px;
+
+}
+
+#flex-container{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+
+	background-color: pink;
+}
+
+#title{
+	font-size:55px;
+}
+
+#grid-container{
+
+	display:grid;
+	align-content: center;
+	justify-items: center;
+	text-align:center;
+
+	width:60vh;
+	height:60vh;
+	border: 1px solid black;
+	margin-bottom:30px;
+
+	grid-template-columns: 15fr 15fr 15fr 15fr; 
+	grid-template-rows: 10fr 10fr 10fr 10fr 10fr 10fr;
+
+
+}
+
+#display{
+
+	width:100%;
+	height:100%;
+	grid-column:1/4;
+	border: 1px solid purple;
+}
+
+#delete{
+	
+	grid-column:4/5;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#clear{
+
+	grid-column:1/2;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+	
+}
+
+#power{
+	grid-column:2/3;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#factorial{
+	grid-column:3/4;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+
+}
+#divide{
+	grid-column:4/5;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+
+#seven{
+
+	grid-column:1/2;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#eight{
+	grid-column:2/3;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#nine{
+	grid-column:3/4;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+
+}
+#multiply{
+	grid-column:4/5;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+
+#four{
+	grid-column:1/2;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#five{
+	grid-column:2/3;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#six{
+	grid-column:3/4;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+
+}
+#subtract{
+	grid-column:4/5;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+
+#one{
+	grid-column:1/2;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#two{
+	grid-column:2/3;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#three{
+	grid-column:3/4;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+
+}
+#add{
+	grid-column:4/5;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+
+#plusminus{
+	grid-column:1/2;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#zero{
+	grid-column:2/3;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+#decimal{
+	grid-column:3/4;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+
+}
+#equal{
+	grid-column:4/5;
+	width:100%;
+	height:100%;
+	border: 1px solid purple;
+}
+
+.buttons:hover{
+
+	font-size:60px;
+}
+
+#delete:hover{
+
+	width:110%;
+	height:110%;
+
+}
+
