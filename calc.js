@@ -55,32 +55,58 @@ function operate(num1,num2,operator)
 }
 
 let display = {
-	"sequence":[],
+	"sequence":"",
+	"operatorlimit":false,
+	"operator":"",
+	"operatorList":["+","-","*","/","^","!"],
 };
 
 function deleteSequence()
 {
-	display["sequence"] = [];
+	display["sequence"] = "";
+	let display_panel = document.querySelector("#display");
+	display_panel.textContent = "";
 }
 
 function storeNumbers()
 {
-	display["sequence"].push(this.getAttribute('value'));
+	let classList = this.getAttribute('class');
+	if(display["operatorlimit"]==false)
+	{
+		display["sequence"] += (this.getAttribute('value'));
+		let display_panel = document.querySelector("#display");
+		display_panel.textContent = display["sequence"];
+	}
+	else
+	{
+		display_panel.textContent = "TOO MANY OPERATORS BRUH";
+	}
 
-	let display_panel = document.querySelector("#display");
-	display_panel.textContent = display["sequence"];
+}
 
+function changeOperatorBool()
+{
+	display["operatorlimit"] = true;
+	display["operator"] = this.getAttribute('value');
 }
 
 function chooseOperator()
 {
-	
+	let sequence = display["sequence"];
+	let index = sequence.indexOf();
 }
 
 function theDomHasLoaded(e) {
+
 	const buttons = document.querySelectorAll('.buttons');
 	buttons.forEach(button => {
 		button.addEventListener('click',storeNumbers);
+		
+	});
+
+	const operators = document.querySelectorAll('.operators');
+	operators.forEach(operator => {
+		operator.addEventListener('click',changeOperatorBool);
 		
 	});
 
@@ -89,6 +115,7 @@ function theDomHasLoaded(e) {
 
 	const equal = document.querySelector('#equal');
 	equal.addEventListener('click',chooseOperator);
+
 }
 
 

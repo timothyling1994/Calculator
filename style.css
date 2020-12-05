@@ -48,6 +48,8 @@ body{
 	height:100%;
 	grid-column:1/4;
 	border: 1px solid purple;
+	font-size:30px;
+	text-align:right;
 }
 
 #delete{
