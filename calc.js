@@ -35,19 +35,40 @@ function factorial(num1)
 
 function operate(num1,num2,operator)
 {
+	num1 = parseFloat(num1);
+	num2 = parseFloat(num2);
 
+	console.log(operator);
 	switch (operator){
-		case "add":
-			add(num1,num2);
+		case "+":
+			display["sequence"]=String(add(num1,num2));
+			updateDisplay();
+			display["operator"]="";
+			display["operatorlimit"]=false;
 			break;
-		case "subtract":
-			subtract(num1,num2);
+		case "-":
+			display["sequence"]=String(subtract(num1,num2));
+			updateDisplay();
+			display["operator"]="";
+			display["operatorlimit"]=false;
 			break;
-		case "multiply":
-			multiply(num1,num2)
+		case "*":
+			display["sequence"]=String(multiply(num1,num2));
+			updateDisplay();
+			display["operator"]="";
+			display["operatorlimit"]=false;
 			break;
-		case "divide":
-			divide(num1,num2);
+		case "/":
+			display["sequence"]=String(divide(num1,num2));
+			updateDisplay();
+			display["operator"]="";
+			display["operatorlimit"]=false;
+			break;
+		case "^":
+			display["sequence"]=String(power(num1,num2));
+			updateDisplay();
+			display["operator"]="";
+			display["operatorlimit"]=false;
 			break;
 
 	}
@@ -59,41 +80,77 @@ let display = {
 	"operatorlimit":false,
 	"operator":"",
 	"operatorList":["+","-","*","/","^","!"],
+	"num1":"",
+	"num2":"",
 };
 
-function deleteSequence()
+function updateDisplay()
+{
+	let display_panel = document.querySelector("#display");
+	display_panel.textContent = display["sequence"];
+}
+
+function clearSequence()
 {
 	display["sequence"] = "";
-	let display_panel = document.querySelector("#display");
-	display_panel.textContent = "";
+	updateDisplay();
+	display["operatorlimit"]=false;
+	display["operator"]="";
 }
 
 function storeNumbers()
 {
 	let classList = this.getAttribute('class');
-	if(display["operatorlimit"]==false)
-	{
-		display["sequence"] += (this.getAttribute('value'));
-		let display_panel = document.querySelector("#display");
-		display_panel.textContent = display["sequence"];
-	}
-	else
+	let display_panel = document.querySelector("#display");
+
+	if(classList.includes('operator') && display["operatorlimit"]==true)
 	{
 		display_panel.textContent = "TOO MANY OPERATORS BRUH";
 	}
+	else
+	{
+		display["sequence"] += (this.getAttribute('value'));
+		updateDisplay();
+	}
 
 }
 
-function changeOperatorBool()
+function setOperator()
 {
-	display["operatorlimit"] = true;
-	display["operator"] = this.getAttribute('value');
+	if(display["operatorlimit"] == false)
+	{
+		display["operatorlimit"] = true;
+		display["operator"] = this.getAttribute('value');
+	}
 }
 
-function chooseOperator()
+function evaluateFunction()
 {
 	let sequence = display["sequence"];
-	let index = sequence.indexOf();
+	//let indexOfOperator = sequence.indexOf(display["operator"]);
+	//if(indexOfOperator>-1)
+	if(display["operator"] != "")
+	{
+		let indexOfOperator = sequence.indexOf(display["operator"]);
+		display["num1"] = sequence.substr(0,indexOfOperator);
+		display["num2"] = sequence.substr(indexOfOperator+1);
+		operate(display["num1"],display["num2"] ,display["operator"]);
+	}
+}
+
+function delete_button()
+{
+	let strLength = display["sequence"].length;
+
+	if(display["operatorList"].indexOf(display["sequence"][strLength-1])>-1)
+	{
+		display["operatorlimit"] = false;
+		display["operator"] = "";
+	}
+
+	display["sequence"] = display["sequence"].substring(0,strLength-1);
+
+	updateDisplay();
 }
 
 function theDomHasLoaded(e) {
@@ -106,15 +163,18 @@ function theDomHasLoaded(e) {
 
 	const operators = document.querySelectorAll('.operators');
 	operators.forEach(operator => {
-		operator.addEventListener('click',changeOperatorBool);
+		operator.addEventListener('click',setOperator);
 		
 	});
 
+	const delete_btn = document.querySelector('#delete');
+	delete_btn.addEventListener('click',delete_button);
+
 	const clear = document.querySelector('#clear');
-	clear.addEventListener('click',deleteSequence);
+	clear.addEventListener('click',clearSequence);
 
 	const equal = document.querySelector('#equal');
-	equal.addEventListener('click',chooseOperator);
+	equal.addEventListener('click',evaluateFunction);
 
 }
 
