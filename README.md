@@ -2,8 +2,7 @@
 
 https://timothyling1994.github.io/Calculator/
 
-Skills Used:
+Learned:
 
-1. Utilizing Grid and Flex for layout
+1. How to utilize both Grid and Flex for layout
 2. JS logic for handling all calculator functions
-3. Code organization
